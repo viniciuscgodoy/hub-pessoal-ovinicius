@@ -74,6 +74,8 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        'military-green': '#026125',
+        'vibrant-yellow': '#F4ED55',
       },
       borderRadius: {
         lg: 'var(--radius)',
