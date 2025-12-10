@@ -39,7 +39,7 @@ export const SocialLinksCard = () => {
             className="w-full"
           >
             <Button className="w-full h-14 justify-start px-6 bg-military-green hover:bg-military-green/90 text-white border-0 font-medium text-base group">
-              <social.icon className="mr-3 h-5 w-5 text-white transition-colors" />
+              <social.icon className="mr-3 h-5 w-5 text-vibrant-yellow transition-colors" />
               <span className="flex-1 text-left">{social.name}</span>
             </Button>
           </a>
