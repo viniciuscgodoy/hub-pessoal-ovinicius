@@ -30,11 +30,11 @@ export const ProductCard = ({
         <h3 className="text-xl font-semibold text-white mb-2 line-clamp-2">
           {title}
         </h3>
-        <p className="text-2xl font-bold text-primary mb-6">{price}</p>
+        <p className="text-2xl font-bold text-[#F4ED55] mb-6">{price}</p>
 
         <div className="mt-auto">
           <Button
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02] transition-all duration-200 font-bold"
+            className="w-full bg-[#F4ED55] text-[#002B10] hover:bg-[#F4ED55]/90 hover:scale-[1.02] transition-all duration-200 font-bold"
             size="lg"
             asChild
           >

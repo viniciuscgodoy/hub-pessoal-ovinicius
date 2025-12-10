@@ -11,7 +11,7 @@ export const ProfileCard = () => {
         <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-white/10 to-transparent blur-sm" />
         <Avatar className="h-32 w-32 sm:h-40 sm:w-40 border-2 border-white/10 shadow-xl">
           <AvatarImage
-            src="https://img.usecurling.com/ppl/medium?gender=male&seed=3"
+            src="https://img.usecurling.com/ppl/medium?gender=male&seed=9"
             alt="Vinicius Godoy"
             className="object-cover"
           />

@@ -5,21 +5,21 @@ import { Instagram, Youtube, Video } from 'lucide-react'
 export const SocialLinksCard = () => {
   const socials = [
     {
-      name: 'Conteúdo Diário',
+      name: 'Acessar conteúdo diário',
       icon: Instagram,
-      url: 'https://instagram.com',
+      url: 'https://instagram.com/oviniciusgodoy',
       label: 'Instagram',
     },
     {
-      name: 'Vídeos Curtos',
-      icon: Video, // Using Video as generic for TikTok if specific icon unavailable
-      url: 'https://tiktok.com',
+      name: 'Acessar vídeos curtos',
+      icon: Video, // Using Video as generic for TikTok
+      url: 'https://tiktok.com/oviniciusgodoy',
       label: 'TikTok',
     },
     {
-      name: 'Vídeos Longos',
+      name: 'Inscreva-se no Canal',
       icon: Youtube,
-      url: 'https://youtube.com',
+      url: 'https://www.youtube.com/@oviniciusgodoy?sub_confirmation=1',
       label: 'YouTube',
     },
   ]
@@ -38,11 +38,8 @@ export const SocialLinksCard = () => {
             rel="noopener noreferrer"
             className="w-full"
           >
-            <Button
-              variant="outline"
-              className="w-full h-14 justify-start px-6 glass-button border-0 text-white font-medium text-base group"
-            >
-              <social.icon className="mr-3 h-5 w-5 text-gray-300 group-hover:text-white transition-colors" />
+            <Button className="w-full h-14 justify-start px-6 bg-[#F4ED55] hover:bg-[#F4ED55]/90 text-[#002B10] border-0 font-medium text-base group">
+              <social.icon className="mr-3 h-5 w-5 text-[#002B10] transition-colors" />
               <span className="flex-1 text-left">{social.name}</span>
             </Button>
           </a>
