@@ -3,9 +3,8 @@ import { BentoCard } from '@/components/BentoCard'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useAuth } from '@/hooks/use-auth'
 import { userService } from '@/services/user'
-import { Loader2, Upload, Camera } from 'lucide-react'
+import { Loader2, Camera } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
-import { cn } from '@/lib/utils'
 
 export const ProfileCard = () => {
   const { user } = useAuth()

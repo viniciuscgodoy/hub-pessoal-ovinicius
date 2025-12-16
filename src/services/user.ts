@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
-import { Database } from '@/lib/supabase/types'
+import type { Database } from '@/lib/supabase/types'
 
 type Profile = Database['public']['Tables']['users']['Row']
 
