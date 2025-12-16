@@ -5,8 +5,14 @@ import {
   useState,
   ReactNode,
 } from 'react'
-import type { User, Session } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
+
+// Infer types from the client instance to avoid direct import issues with @supabase/supabase-js
+// that are causing bundler warnings about 'default' export.
+type Session = NonNullable<
+  Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session']
+>
+type User = Session['user']
 
 interface AuthContextType {
   user: User | null
