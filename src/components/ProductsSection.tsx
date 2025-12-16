@@ -1,38 +1,48 @@
 import { ProductCard } from '@/components/ProductCard'
 
 export const ProductsSection = () => {
-  return (
-    <section className="space-y-6">
-      <div
-        className="flex items-center gap-3 mb-4 px-1 opacity-0 animate-fade-in-up"
-        style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
-      >
-        <h2 className="text-2xl font-bold text-white">
-          Ferramentas & Templates
-        </h2>
-        <div className="h-px bg-white/10 flex-grow" />
-      </div>
+  const products = [
+    {
+      title: 'O Guia do Estoicismo Moderno',
+      description:
+        'Aprenda a aplicar os princípios estoicos no mundo digital e caótico de hoje.',
+      price: 'R$ 49,90',
+      image:
+        'https://img.usecurling.com/p/400/300?q=book%20stoicism%20minimalist',
+      tag: 'E-book',
+    },
+    {
+      title: 'Pack de Notion para Produtividade',
+      description:
+        'Templates completos para organizar sua vida, estudos e trabalho no Notion.',
+      price: 'R$ 29,90',
+      image:
+        'https://img.usecurling.com/p/400/300?q=notion%20template%20dashboard',
+      tag: 'Template',
+    },
+    {
+      title: 'Mentoria de Carreira Tech',
+      description:
+        'Sessão de 1 hora para alavancar sua carreira como desenvolvedor.',
+      price: 'R$ 150,00',
+      image:
+        'https://img.usecurling.com/p/400/300?q=mentoring%20video%20call%20tech',
+      tag: 'Serviço',
+    },
+  ]
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <ProductCard
-          title="Segundo Cérebro Estoico - Notion Template"
-          price="R$ 47,90"
-          imageQuery="notion minimalist dashboard dark"
-          delay={400}
-        />
-        <ProductCard
-          title="Sistema de Hábitos Atômicos"
-          price="R$ 29,90"
-          imageQuery="habit tracker digital minimalist"
-          delay={500}
-        />
-        <ProductCard
-          title="Journaling Diário - Reflexões"
-          price="R$ 19,90"
-          imageQuery="digital journal tablet dark"
-          delay={600}
-        />
+  return (
+    <div className="w-full">
+      <h2 className="text-2xl font-bold mb-6 px-2">Produtos Digitais</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {products.map((product, index) => (
+          <ProductCard
+            key={product.title}
+            {...product}
+            delay={300 + index * 100}
+          />
+        ))}
       </div>
-    </section>
+    </div>
   )
 }

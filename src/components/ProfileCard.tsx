@@ -86,16 +86,16 @@ export const ProfileCard = () => {
 
   return (
     <BentoCard
-      className="flex flex-col items-center justify-center text-center p-8 h-full"
+      className="flex flex-col items-center justify-center text-center p-8 h-full min-h-[400px]"
       delay={100}
     >
       <div
-        className="relative mb-6 group cursor-pointer"
+        className="relative mb-6 group/avatar cursor-pointer"
         onClick={triggerFileInput}
       >
-        <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-white/10 to-transparent blur-sm" />
+        <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary/20 to-transparent blur-sm" />
 
-        <Avatar className="h-32 w-32 sm:h-40 sm:w-40 border-2 border-white/10 shadow-xl transition-opacity group-hover:opacity-80">
+        <Avatar className="h-32 w-32 sm:h-40 sm:w-40 border-2 border-border shadow-xl transition-all group-hover/avatar:scale-105">
           <AvatarImage
             src={
               avatarUrl ||
@@ -109,14 +109,14 @@ export const ProfileCard = () => {
 
         {/* Loading Overlay */}
         {(isLoading || isUploading) && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full z-20">
-            <Loader2 className="h-8 w-8 text-white animate-spin" />
+          <div className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm rounded-full z-20">
+            <Loader2 className="h-8 w-8 text-primary animate-spin" />
           </div>
         )}
 
         {/* Edit Overlay (Hover) */}
         {!isLoading && !isUploading && user && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-200 z-10">
             <Camera className="h-8 w-8 text-white/90" />
           </div>
         )}
@@ -131,13 +131,11 @@ export const ProfileCard = () => {
         />
       </div>
 
-      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
+      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-2">
         {displayName}
       </h1>
-      <p className="text-lg text-muted-foreground font-medium mb-4">
-        @oviniciusgodoy
-      </p>
-      <p className="max-w-md text-base sm:text-lg text-gray-400 leading-relaxed">
+      <p className="text-lg text-primary font-medium mb-4">@oviniciusgodoy</p>
+      <p className="max-w-md text-base sm:text-lg text-muted-foreground leading-relaxed">
         Explorando a intersecção entre tecnologia, estoicismo e alta
         performance.
       </p>

@@ -1,47 +1,48 @@
 import { BentoCard } from '@/components/BentoCard'
-import { Button } from '@/components/ui/button'
-import { Instagram, Youtube, Video } from 'lucide-react'
+import { Github, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
 
 export const SocialLinksCard = () => {
   const socials = [
     {
-      name: 'Acessar conteúdo diário',
+      name: 'Instagram',
       icon: Instagram,
-      url: 'https://instagram.com/oviniciusgodoy',
-      label: 'Instagram',
+      href: '#',
+      color: 'hover:text-pink-500',
+    },
+    { name: 'Twitter', icon: Twitter, href: '#', color: 'hover:text-blue-400' },
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
+      href: '#',
+      color: 'hover:text-blue-600',
     },
     {
-      name: 'Acessar vídeos curtos',
-      icon: Video, // Using Video as generic for TikTok
-      url: 'https://tiktok.com/oviniciusgodoy',
-      label: 'TikTok',
+      name: 'GitHub',
+      icon: Github,
+      href: '#',
+      color: 'hover:text-gray-900 dark:hover:text-white',
     },
-    {
-      name: 'Inscreva-se no Canal',
-      icon: Youtube,
-      url: 'https://www.youtube.com/@oviniciusgodoy?sub_confirmation=1',
-      label: 'YouTube',
-    },
+    { name: 'YouTube', icon: Youtube, href: '#', color: 'hover:text-red-500' },
   ]
 
   return (
-    <BentoCard className="flex flex-col justify-center h-full" delay={200}>
-      <h2 className="text-xl font-semibold mb-6 text-white flex items-center gap-2">
-        Social
-      </h2>
-      <div className="grid gap-4">
+    <BentoCard delay={200} className="flex flex-col justify-center h-full">
+      <h3 className="text-xl font-semibold mb-6">Conecte-se comigo</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {socials.map((social) => (
           <a
-            key={social.label}
-            href={social.url}
+            key={social.name}
+            href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full"
+            className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
           >
-            <Button className="w-full h-14 justify-start px-6 bg-military-green hover:bg-military-green/90 text-white border-0 font-medium text-base group">
-              <social.icon className="mr-3 h-5 w-5 text-vibrant-yellow transition-colors" />
-              <span className="flex-1 text-left">{social.name}</span>
-            </Button>
+            <social.icon
+              className={`h-6 w-6 transition-colors ${social.color}`}
+            />
+            <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground">
+              {social.name}
+            </span>
           </a>
         ))}
       </div>

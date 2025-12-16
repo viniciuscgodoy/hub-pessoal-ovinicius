@@ -1,47 +1,54 @@
-import { ArrowRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { BentoCard } from '@/components/BentoCard'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { ShoppingCart } from 'lucide-react'
 
 interface ProductCardProps {
   title: string
+  description: string
   price: string
-  imageQuery: string
+  image: string
+  tag?: string
   delay?: number
 }
 
 export const ProductCard = ({
   title,
+  description,
   price,
-  imageQuery,
+  image,
+  tag,
   delay,
 }: ProductCardProps) => {
   return (
-    <BentoCard className="p-0 flex flex-col h-full group" delay={delay}>
-      <div className="relative h-48 w-full overflow-hidden bg-muted">
+    <BentoCard
+      delay={delay}
+      className="flex flex-col p-0 overflow-hidden h-full"
+    >
+      <div className="relative h-48 w-full overflow-hidden">
         <img
-          src={`https://img.usecurling.com/p/600/400?q=${encodeURIComponent(imageQuery)}&color=black`}
+          src={image}
           alt={title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#151515] to-transparent opacity-60" />
+        {tag && (
+          <Badge className="absolute top-3 right-3 bg-black/70 hover:bg-black/80 text-white backdrop-blur-md border-none">
+            {tag}
+          </Badge>
+        )}
       </div>
-
       <div className="flex flex-col flex-grow p-6">
-        <h3 className="text-xl font-semibold text-white mb-2 line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-2xl font-bold text-white mb-6">{price}</p>
-
-        <div className="mt-auto">
-          <Button
-            className="w-full bg-military-green text-white hover:bg-military-green/90 hover:scale-[1.02] transition-all duration-200 font-bold"
-            size="lg"
-            asChild
-          >
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              Comprar Agora
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+        <div className="mb-4">
+          <h3 className="text-xl font-bold mb-2 line-clamp-1">{title}</h3>
+          <p className="text-sm text-muted-foreground line-clamp-2">
+            {description}
+          </p>
+        </div>
+        <div className="mt-auto flex items-center justify-between gap-4">
+          <span className="text-lg font-bold text-primary">{price}</span>
+          <Button size="sm" className="group">
+            Comprar
+            <ShoppingCart className="ml-2 h-4 w-4 transition-transform group-hover:scale-110" />
           </Button>
         </div>
       </div>

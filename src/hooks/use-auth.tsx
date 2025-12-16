@@ -5,8 +5,14 @@ import {
   useState,
   ReactNode,
 } from 'react'
-import type { User, Session } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
+
+// Infer types from the client to avoid import warnings from @supabase/supabase-js
+// This ensures we are using the exact types returned by the client instance
+type Session = Awaited<
+  ReturnType<typeof supabase.auth.getSession>
+>['data']['session']
+type User = NonNullable<Session>['user']
 
 interface AuthContextType {
   user: User | null
@@ -37,7 +43,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      // It is FORBIDDEN to use async / await inside this callback
       setSession(session)
       setUser(session?.user ?? null)
       setLoading(false)
