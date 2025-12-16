@@ -5,14 +5,8 @@ import {
   useState,
   ReactNode,
 } from 'react'
+import { User, Session } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
-
-// Infer types from the client to avoid import warnings from @supabase/supabase-js
-// This ensures we are using the exact types returned by the client instance
-type Session = Awaited<
-  ReturnType<typeof supabase.auth.getSession>
->['data']['session']
-type User = NonNullable<Session>['user']
 
 interface AuthContextType {
   user: User | null
