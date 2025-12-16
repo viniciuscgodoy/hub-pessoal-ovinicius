@@ -1,15 +1,19 @@
-import { BentoCard } from '@/components/BentoCard'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { ShoppingCart } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 interface ProductCardProps {
   title: string
   description: string
   price: string
   image: string
-  tag?: string
-  delay?: number
+  link: string
 }
 
 export const ProductCard = ({
@@ -17,41 +21,33 @@ export const ProductCard = ({
   description,
   price,
   image,
-  tag,
-  delay,
+  link,
 }: ProductCardProps) => {
   return (
-    <BentoCard
-      delay={delay}
-      className="flex flex-col p-0 overflow-hidden h-full"
-    >
-      <div className="relative h-48 w-full overflow-hidden">
+    <Card className="overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
+      <div className="aspect-video w-full overflow-hidden">
         <img
           src={image}
           alt={title}
-          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+          className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
         />
-        {tag && (
-          <Badge className="absolute top-3 right-3 bg-black/70 hover:bg-black/80 text-white backdrop-blur-md border-none">
-            {tag}
-          </Badge>
-        )}
       </div>
-      <div className="flex flex-col flex-grow p-6">
-        <div className="mb-4">
-          <h3 className="text-xl font-bold mb-2 line-clamp-1">{title}</h3>
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {description}
-          </p>
-        </div>
-        <div className="mt-auto flex items-center justify-between gap-4">
-          <span className="text-lg font-bold text-primary">{price}</span>
-          <Button size="sm" className="group">
-            Comprar
-            <ShoppingCart className="ml-2 h-4 w-4 transition-transform group-hover:scale-110" />
-          </Button>
-        </div>
-      </div>
-    </BentoCard>
+      <CardHeader>
+        <CardTitle className="text-xl">{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex-grow">
+        <p className="text-muted-foreground text-sm line-clamp-3">
+          {description}
+        </p>
+      </CardContent>
+      <CardFooter className="flex justify-between items-center border-t pt-4">
+        <span className="font-bold text-lg">{price}</span>
+        <Button size="sm" asChild>
+          <a href={link} className="gap-2">
+            Ver detalhes <ArrowRight className="h-4 w-4" />
+          </a>
+        </Button>
+      </CardFooter>
+    </Card>
   )
 }

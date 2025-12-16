@@ -1,34 +1,52 @@
 import { ProfileCard } from '@/components/ProfileCard'
 import { SocialLinksCard } from '@/components/SocialLinksCard'
 import { ProductsSection } from '@/components/ProductsSection'
+import { BentoCard } from '@/components/BentoCard'
+import { Mail, MapPin } from 'lucide-react'
 
-const Index = () => {
+export default function Index() {
   return (
-    <div className="min-h-screen bg-background pb-20 pt-8 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl space-y-8">
-        {/* Header Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Main Profile - Takes 2 cols on md */}
-          <div className="md:col-span-2">
-            <ProfileCard />
-          </div>
+    <div className="space-y-8 animate-fade-in-up">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Main Profile Card - Takes 2 columns on desktop */}
+        <div className="md:col-span-2">
+          <ProfileCard />
+        </div>
 
-          {/* Social Links - Takes 1 col on md */}
-          <div className="md:col-span-1">
+        {/* Right Column */}
+        <div className="space-y-6 flex flex-col h-full">
+          {/* Social Links */}
+          <div className="flex-grow">
             <SocialLinksCard />
           </div>
-        </div>
 
-        {/* Products Section */}
+          {/* Quick Info / Location */}
+          <BentoCard className="p-6" delay={300}>
+            <h3 className="text-lg font-semibold mb-4">Informações</h3>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <MapPin className="h-5 w-5" />
+                <span>São Paulo, Brasil</span>
+              </div>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <Mail className="h-5 w-5" />
+                <a
+                  href="mailto:contato@exemplo.com"
+                  className="hover:text-primary transition-colors"
+                >
+                  contato@viniciusgodoy.dev
+                </a>
+              </div>
+            </div>
+          </BentoCard>
+        </div>
+      </div>
+
+      {/* Products Section */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold tracking-tight">Produtos Digitais</h2>
         <ProductsSection />
-
-        {/* Footer Text */}
-        <div className="text-center text-sm text-muted-foreground mt-12">
-          <p>© 2024 Vinicius Godoy. Todos os direitos reservados.</p>
-        </div>
       </div>
     </div>
   )
 }
-
-export default Index

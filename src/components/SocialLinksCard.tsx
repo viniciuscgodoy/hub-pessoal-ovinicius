@@ -1,49 +1,51 @@
 import { BentoCard } from '@/components/BentoCard'
-import { Github, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Github, Linkedin, Instagram, Twitter } from 'lucide-react'
 
 export const SocialLinksCard = () => {
   const socials = [
     {
-      name: 'Instagram',
-      icon: Instagram,
-      href: '#',
-      color: 'hover:text-pink-500',
+      icon: Github,
+      href: 'https://github.com',
+      label: 'GitHub',
+      color: 'hover:text-black dark:hover:text-white',
     },
-    { name: 'Twitter', icon: Twitter, href: '#', color: 'hover:text-blue-400' },
     {
-      name: 'LinkedIn',
       icon: Linkedin,
-      href: '#',
+      href: 'https://linkedin.com',
+      label: 'LinkedIn',
       color: 'hover:text-blue-600',
     },
     {
-      name: 'GitHub',
-      icon: Github,
-      href: '#',
-      color: 'hover:text-gray-900 dark:hover:text-white',
+      icon: Instagram,
+      href: 'https://instagram.com',
+      label: 'Instagram',
+      color: 'hover:text-pink-600',
     },
-    { name: 'YouTube', icon: Youtube, href: '#', color: 'hover:text-red-500' },
+    {
+      icon: Twitter,
+      href: 'https://twitter.com',
+      label: 'Twitter',
+      color: 'hover:text-blue-400',
+    },
   ]
 
   return (
-    <BentoCard delay={200} className="flex flex-col justify-center h-full">
-      <h3 className="text-xl font-semibold mb-6">Conecte-se comigo</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    <BentoCard className="p-6 flex flex-col justify-center h-full" delay={200}>
+      <h3 className="text-lg font-semibold mb-6">Conecte-se comigo</h3>
+      <div className="grid grid-cols-2 gap-4">
         {socials.map((social) => (
-          <a
-            key={social.name}
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
+          <Button
+            key={social.label}
+            variant="outline"
+            className={`w-full justify-start gap-2 hover:bg-muted/50 ${social.color}`}
+            asChild
           >
-            <social.icon
-              className={`h-6 w-6 transition-colors ${social.color}`}
-            />
-            <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground">
-              {social.name}
-            </span>
-          </a>
+            <a href={social.href} target="_blank" rel="noopener noreferrer">
+              <social.icon className="h-4 w-4" />
+              {social.label}
+            </a>
+          </Button>
         ))}
       </div>
     </BentoCard>

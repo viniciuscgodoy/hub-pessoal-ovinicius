@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
-import { Tables } from '@/lib/supabase/types'
+import type { Tables } from '@/lib/supabase/types'
 
 export type UserProfile = Tables<'users'>
 

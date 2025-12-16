@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/use-auth'
 import {
   getUserProfile,
   uploadAvatar,
-  UserProfile,
+  type UserProfile,
 } from '@/services/user-service'
 import { Camera, Loader2 } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
@@ -86,14 +86,14 @@ export const ProfileCard = () => {
   const displayHandle = '@oviniciusgodoy'
   const displayBio =
     'Explorando a intersecção entre tecnologia, estoicismo e alta performance.'
-  // Default placeholder if no avatar set
+  // Default placeholder if no avatar set - matching user attachment (Runner)
   const defaultAvatar =
-    'https://raw.githubusercontent.com/v0-dev/user-content/refs/heads/main/11406/527788099-090c2918-0912-429d-9562-b13c242a96ba.jpg'
+    'https://img.usecurling.com/p/512/512?q=runner%205205%20marathon&seed=1'
   const avatarUrl = profile?.avatar_url || defaultAvatar
 
   return (
     <BentoCard
-      className="flex flex-col items-center justify-center text-center p-8 h-full"
+      className="flex flex-col items-center justify-center text-center p-8 h-full min-h-[400px]"
       delay={100}
     >
       <div className="relative mb-6 group">
@@ -105,7 +105,7 @@ export const ProfileCard = () => {
           )}
           onClick={handleAvatarClick}
         >
-          <Avatar className="h-32 w-32 sm:h-40 sm:w-40 border-2 border-white/10 shadow-xl relative overflow-hidden">
+          <Avatar className="h-32 w-32 sm:h-40 sm:w-40 border-4 border-background shadow-xl relative overflow-hidden ring-2 ring-muted/20">
             <AvatarImage
               src={avatarUrl}
               alt={displayName}
@@ -141,13 +141,13 @@ export const ProfileCard = () => {
         />
       </div>
 
-      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
+      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-2">
         {displayName}
       </h1>
       <p className="text-lg text-muted-foreground font-medium mb-4">
         {displayHandle}
       </p>
-      <p className="max-w-md text-base sm:text-lg text-gray-400 leading-relaxed">
+      <p className="max-w-md text-base sm:text-lg text-muted-foreground leading-relaxed">
         {displayBio}
       </p>
     </BentoCard>
